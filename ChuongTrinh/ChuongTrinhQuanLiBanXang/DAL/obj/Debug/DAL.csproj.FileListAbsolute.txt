@@ -1,0 +1,11 @@
+C:\Users\HOANDHTB\Desktop\ChuongTrinhQuanLiBanXang\DAL\bin\Debug\DAL.dll.config
+C:\Users\HOANDHTB\Desktop\ChuongTrinhQuanLiBanXang\DAL\bin\Debug\DAL.dll
+C:\Users\HOANDHTB\Desktop\ChuongTrinhQuanLiBanXang\DAL\bin\Debug\DAL.pdb
+C:\Users\HOANDHTB\Desktop\ChuongTrinhQuanLiBanXang\DAL\obj\Debug\DAL.dll
+C:\Users\HOANDHTB\Desktop\ChuongTrinhQuanLiBanXang\DAL\obj\Debug\DAL.pdb
+F:\ChuongTrinhQuanLiBanXang\DAL\bin\Debug\DAL.dll.config
+F:\ChuongTrinhQuanLiBanXang\DAL\bin\Debug\DAL.dll
+F:\ChuongTrinhQuanLiBanXang\DAL\bin\Debug\DAL.pdb
+F:\ChuongTrinhQuanLiBanXang\DAL\obj\Debug\DAL.dll
+F:\ChuongTrinhQuanLiBanXang\DAL\obj\Debug\DAL.pdb
+F:\ChuongTrinhQuanLiBanXang\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

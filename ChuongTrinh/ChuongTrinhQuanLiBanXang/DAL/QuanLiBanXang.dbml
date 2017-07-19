@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLiBanXang" Class="QuanLiBanXangDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=HOANDHTB-PC\SQLEXPRESS;Initial Catalog=QuanLiBanXang;User ID=sa" SettingsObjectName="DAL.Properties.Settings" SettingsPropertyName="QuanLiBanXangConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BangThue" Member="BangThues">
+    <Type Name="BangThue">
+      <Column Name="MaThue" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PhanTramTinh" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="LaThueHienTai" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LaMua" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="BangThue_HangNhap" Member="HangNhaps" ThisKey="MaThue" OtherKey="MaThue" Type="HangNhap" />
+      <Association Name="BangThue_HangBan" Member="HangBans" ThisKey="MaThue" OtherKey="MaThue" Type="HangBan" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonGiaBan" Member="DonGiaBans">
+    <Type Name="DonGiaBan">
+      <Column Name="MaDonGia" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaMatHang" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Gia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="LaGiaHienTai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="MatHang_DonGiaBan" Member="MatHang" ThisKey="MaMatHang" OtherKey="MaMatHang" Type="MatHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonGiaNhap" Member="DonGiaNhaps">
+    <Type Name="DonGiaNhap">
+      <Column Name="MaDonGia" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaMatHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="GiaHienTai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="MatHang_DonGiaNhap" Member="MatHang" ThisKey="MaMatHang" OtherKey="MaMatHang" Type="MatHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HangNhap" Member="HangNhaps">
+    <Type Name="HangNhap">
+      <Column Name="SoHieu" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaMatHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="MaThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThanhTien" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Thue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TongCong" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NgayNhap" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="BangThue_HangNhap" Member="BangThue" ThisKey="MaThue" OtherKey="MaThue" Type="BangThue" IsForeignKey="true" />
+      <Association Name="MatHang_HangNhap" Member="MatHang" ThisKey="MaMatHang" OtherKey="MaMatHang" Type="MatHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MatHang" Member="MatHangs">
+    <Type Name="MatHang">
+      <Column Name="MaMatHang" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenHang" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DonViTinh" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="MatHang_DonGiaBan" Member="DonGiaBans" ThisKey="MaMatHang" OtherKey="MaMatHang" Type="DonGiaBan" />
+      <Association Name="MatHang_DonGiaNhap" Member="DonGiaNhaps" ThisKey="MaMatHang" OtherKey="MaMatHang" Type="DonGiaNhap" />
+      <Association Name="MatHang_HangNhap" Member="HangNhaps" ThisKey="MaMatHang" OtherKey="MaMatHang" Type="HangNhap" />
+      <Association Name="MatHang_HangBan" Member="HangBans" ThisKey="MaMatHang" OtherKey="MaMatHang" Type="HangBan" />
+      <Association Name="MatHang_KhoXang" Member="KhoXangs" ThisKey="MaMatHang" OtherKey="MaHang" Type="KhoXang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HangBan" Member="HangBans">
+    <Type Name="HangBan">
+      <Column Name="SoHieu" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaMatHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Gia" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="MaThue" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ThanhTien" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Thue" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TongCong" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NgayBan" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="BangThue_HangBan" Member="BangThue" ThisKey="MaThue" OtherKey="MaThue" Type="BangThue" IsForeignKey="true" />
+      <Association Name="MatHang_HangBan" Member="MatHang" ThisKey="MaMatHang" OtherKey="MaMatHang" Type="MatHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhoXang" Member="KhoXangs">
+    <Type Name="KhoXang">
+      <Column Name="Thang" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nam" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaHang" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TonXang" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="XangBan" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="XangNhap" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TonCu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="MatHang_KhoXang" Member="MatHang" ThisKey="MaHang" OtherKey="MaMatHang" Type="MatHang" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
